@@ -1,0 +1,35 @@
+server:
+  port: 8092
+  error:
+    include-message: always
+---
+rest:
+  template:
+    currency:
+      connectionRequestTimeout: 3000
+      connectTimeout: 3000
+      readTimeout: 3000
+
+---
+test: 12345
+---
+currency:
+  host: http://www.cbr.ru/scripts/XML_daily.asp
+  schemaXSD: currency-service/src/main/resources/currencies.xsd
+
+---
+scheduler:
+  maxErrors: 10
+  maxTimes: 1000
+
+---
+logging:
+  file:
+    name: logs/application-info.log
+  level: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test

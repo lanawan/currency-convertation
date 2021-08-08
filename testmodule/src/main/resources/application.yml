@@ -1,0 +1,14 @@
+server:
+  port: 8092
+  error:
+    include-message: always
+---
+scheduler:
+  maxErrors: 10
+  maxTimes: 1000
+  testCurrencyHost: http://localhost:${server.port}/api/currency
+---
+spring:
+  config:
+    activate:
+      on-profile: test
